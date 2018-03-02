@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		Google Image Search Direct Links Old Style
 // @version		1.0
-// @downloadURL	https://github.com/svArtist/blargh.user.js
+// @downloadURL	https://github.com/svArtist/Userscript-Google-ImageSearch-Direct-Links/raw/master/Userscript-Google-ImageSearch-Direct-Links.user.js
 // @namespace	bp
 // @author		Benjamin Philipp <benjamin_philipp [at - please don't spam] gmx.de>
 // @include		/^https?:\/\/(www\.)*google\.[a-z\.]{2,5}\/search.*tbm=isch.*/
