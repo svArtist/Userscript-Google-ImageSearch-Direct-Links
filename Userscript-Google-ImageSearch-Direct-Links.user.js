@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name		Google Image Search Direct Links Old Style
 // @version		1.2
+// @downloadURL	https://github.com/svArtist/Userscript-Google-ImageSearch-Direct-Links/raw/master/Userscript-Google-ImageSearch-Direct-Links.user.js
 // @description Replace links and click actions of the Google Image Search results with direct links to the picture, and the page link. Now opens in the same tab by default
 // @namespace	bp
 // @author		Benjamin Philipp <benjamin_philipp [at - please don't spam] gmx.de>
