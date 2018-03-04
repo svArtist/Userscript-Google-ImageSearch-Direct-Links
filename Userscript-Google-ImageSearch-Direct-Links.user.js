@@ -1,8 +1,7 @@
 // ==UserScript==
 // @name		Google Image Search Direct Links Old Style
-// @version		1.1
+// @version		1.2
 // @description Replace links and click actions of the Google Image Search results with direct links to the picture, and the page link. Now opens in the same tab by default
-// @downloadURL	https://github.com/svArtist/blargh.user.js
 // @namespace	bp
 // @author		Benjamin Philipp <benjamin_philipp [at - please don't spam] gmx.de>
 // @include		/^https?:\/\/(www\.)*google\.[a-z\.]{2,5}\/search.*tbm=isch.*/
@@ -23,10 +22,26 @@ function updatePage()
 		disableUpdate = true;
 		$("head").append("\
 		<style id='directLinkStyles'>\
-		.linkswait{ \
-			box-shadow: 0 0 20px #f00; \
-			border: 2px solid #f00; \
-			border-radius: 5px; \
+		.waitwarn{ \
+			opacity:0; \
+			box-shadow: 3px 5px 10px rgba(0,0,0,0.5); \
+			position: absolute; \
+			right:0; bottom:0; \
+			color: rgba(200,200,200, 0.7)!important; \
+			padding: 2px 10px; \
+			font-size: 28pt; \
+			display: block; \
+			font-weight: bold; \
+			text-decoration: none;\
+			background-color: rgba(255,255,255,0.5); \
+			transition: opacity 0.5s, color 0.5s, font-size 0.5s, padding 0.5s; \
+			} \
+		a:hover .waitwarn{ \
+			opacity:1; \
+			color: rgba(155,177,233, 1)!important; \
+			padding:5px 25px; \
+			font-size: 36pt; \
+			} \
 		</style>");
 		disableUpdate = false;
 	}
@@ -70,6 +85,7 @@ function updatePage()
 		})
         $(this).removeClass("linkswait");
 		$(this).addClass("linksdone");
+		$(this).find(".waitwarn").remove();
 		disableUpdate = false;
 	});
     var notready = false;
@@ -77,6 +93,7 @@ function updatePage()
         notready = true;
         if(!$(this).hasClass("linkswait")){
             $(this).addClass("linkswait");
+			$(this).append("<div class='waitwarn' title=\"Warning: The direct links aren't ready yet because Google hasn't provided the actual links yet. \nThey will be inserted as soon as they're available.\">!</div>");
         }
     });
 	if(notready){
