@@ -1,4 +1,6 @@
 // ==UserScript==
+///////////////// In case it fails to update in TamperMonkey, visit  https://github.com/svArtist/Userscript-Google-ImageSearch-Direct-Links/raw/master/Userscript-Google-ImageSearch-Direct-Links.user.js  directly ////////
+// @name		Google Image Search Direct Links Old Style
 // @name		Google Image Search Direct Links Old Style
 // @version		1.2
 // @downloadURL	https://github.com/svArtist/Userscript-Google-ImageSearch-Direct-Links/raw/master/Userscript-Google-ImageSearch-Direct-Links.user.js
