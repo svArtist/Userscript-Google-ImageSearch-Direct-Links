@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name		Google Image Search Direct Links Old Style
-// @version		1.0
-// @downloadURL	https://github.com/svArtist/Userscript-Google-ImageSearch-Direct-Links/raw/master/Userscript-Google-ImageSearch-Direct-Links.user.js
+// @version		1.1
+// @description Replace links and click actions of the Google Image Search results with direct links to the picture, and the page link. Now opens in the same tab by default
+// @downloadURL	https://github.com/svArtist/blargh.user.js
 // @namespace	bp
 // @author		Benjamin Philipp <benjamin_philipp [at - please don't spam] gmx.de>
 // @include		/^https?:\/\/(www\.)*google\.[a-z\.]{2,5}\/search.*tbm=isch.*/
@@ -51,15 +52,21 @@ function updatePage()
 		piclink = decodeURIComponent(piclink);
 		disableUpdate = true;
 		tp.href = piclink;
-		$(tp).click(function(){
-			window.open(this.href);
-			return false;
+		
+		$(tp).off("click");
+		$(uriLink).off("click");
+		
+		$(tp).click(function(e){
+			e.stopImmediatePropagation(); // prevent event from bubbling up to google's handler
+//			window.open(this.href); // not needed, doing it old school
+//			return false;
 		})
+		uriLink.innerHTML = "<a style='display:block; color:#fff; text-decoration:none;' href = '" + reflink + "'>" + uriLink.innerHTML + "</a>"; // Replace <span> text content with an actual link
 		$(uriLink).click(function(e){
-			e.preventDefault();
+//			e.preventDefault();
 			e.stopImmediatePropagation();
-			window.open(reflink);
-			return false;
+//			window.open(reflink); // not needed, doing it old school
+//			return false;
 		})
         $(this).removeClass("linkswait");
 		$(this).addClass("linksdone");
